@@ -1,0 +1,78 @@
+# ================================================================
+# CLASS ANNOUNCEMENT AGENT - DAILY INPUT
+# ================================================================
+# Edit ONLY this file for normal daily announcements/reminders.
+#
+# The Python agent will:
+#   1. Read the announcements below
+#   2. Skip expired announcements
+#   3. Skip recent duplicates
+#   4. Combine active announcements into one Messenger message
+#   5. Generate a PDF backup
+#   6. Open the persistent Brave Messenger session
+#   7. Send the message and verify delivery
+#   8. Update the duplicate cache ONLY after successful delivery
+#
+# IMPORTANT:
+# - recipient_name must match the Messenger conversation/group name closely.
+# - send_time uses 24-hour time.
+# - expires_date must use YYYY-MM-DD.
+# - attachments are optional filenames/paths to mention in the message.
+# - Changing an announcement's title/body creates a new fingerprint.
+# ================================================================
+
+class_name: YOUR CLASS NAME
+recipient_name: YOUR MESSENGER GROUP
+messenger:
+  recipient_name: YOUR MESSENGER GROUP
+  headless: false
+  send_delay_seconds: 2
+send_time:
+  hour: 21
+  minute: 0
+duplicate_window_hours: 24
+announcements:
+  - type: reminder
+    title: "Example Reminder"
+    body: |
+      Replace this text with your announcement.
+    priority: normal
+    category: general
+    expires_date: "2099-12-31"
+    target_audience: all
+    attachments: []
+
+
+# ================================================================
+# HOW TO ADD AN ANNOUNCEMENTS
+# ================================================================
+# Copy the block below and place it under "announcements:".
+#
+#   - type: "reminder"
+#     title: "Class Reminder"
+#     body: |
+#       Your reminder text here.
+#       You can use multiple lines.
+#     priority: "high"
+#     category: "academics"
+#     target_audience: "all"
+#     expires_date: "2026-08-25"
+#     attachments: []
+#
+# Priority levels:
+#   urgent = critical/time-sensitive
+#   high   = important
+#   normal = regular
+#   low    = informational
+#
+# Common types:
+#   reminder
+#   announcement
+#   homework
+#   exam
+#   event
+#   attendance
+#   study_tip
+#   misc
+#
+# ================================================================
